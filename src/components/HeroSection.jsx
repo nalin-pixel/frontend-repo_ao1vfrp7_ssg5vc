@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { Star, Phone, Mail, ArrowRight, Sparkles } from 'lucide-react';
+import Spline from '@splinetool/react-spline';
 
 export default function HeroSection() {
   const stats = useMemo(() => (
@@ -32,10 +33,12 @@ export default function HeroSection() {
         </div>
       </header>
 
-      {/* Hero section */}
+      {/* Hero section with BIG animation */}
       <section className="relative bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+        {/* Background glow overlay must not block interaction */}
         <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_top_right,rgba(79,70,229,0.12),transparent_40%)]" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 relative">
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14 relative">
           <div className="grid md:grid-cols-2 gap-10 items-center">
             <div>
               <span className="inline-flex items-center gap-2 rounded-full bg-indigo-100 text-indigo-700 px-3 py-1 text-xs font-medium mb-4">
@@ -60,24 +63,25 @@ export default function HeroSection() {
                 <div className="inline-flex items-center gap-2"><Phone className="h-4 w-4 text-indigo-600" /> +91 9581400055</div>
                 <div className="inline-flex items-center gap-2"><Mail className="h-4 w-4 text-indigo-600" /> support@thinkpluseducation.com</div>
               </div>
-            </div>
-            <div className="relative">
-              <div className="aspect-[4/3] rounded-2xl bg-gradient-to-br from-indigo-200 via-purple-200 to-pink-200 shadow-inner" />
-              <div className="absolute -bottom-6 -left-6 bg-white/90 backdrop-blur rounded-xl shadow p-4 border border-slate-200">
-                <p className="text-sm font-medium text-slate-900">Start your prep the THINKPLUS way</p>
-                <p className="text-xs text-slate-600">Structured roadmap • Personal mentoring • Mock tests</p>
-              </div>
-            </div>
-          </div>
 
-          {/* Stats */}
-          <div className="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-4">
-            {stats.map((s) => (
-              <div key={s.label} className="rounded-xl border border-slate-200 bg-white p-4 text-center shadow-sm">
-                <div className="text-2xl font-bold text-slate-900">{s.value}</div>
-                <div className="text-xs text-slate-600 mt-1">{s.label}</div>
+              {/* Stats */}
+              <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4">
+                {stats.map((s) => (
+                  <div key={s.label} className="rounded-xl border border-slate-200 bg-white p-4 text-center shadow-sm">
+                    <div className="text-2xl font-bold text-slate-900">{s.value}</div>
+                    <div className="text-xs text-slate-600 mt-1">{s.label}</div>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+
+            {/* Massive Spline animation */}
+            <div className="relative w-full h-[380px] sm:h-[460px] md:h-[560px] rounded-2xl overflow-hidden shadow-xl border border-slate-200 bg-black">
+              <Spline
+                scene="https://prod.spline.design/jdTN4VDCXmSY8utE/scene.splinecode"
+                style={{ width: '100%', height: '100%' }}
+              />
+            </div>
           </div>
         </div>
       </section>
